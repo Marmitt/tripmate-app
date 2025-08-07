@@ -18,12 +18,23 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				fredoka: ['Fredoka', 'cursive'],
+				'dm-sans': ['DM Sans', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'coral-pink': 'hsl(var(--coral-pink))',
+				'sunny-yellow': 'hsl(var(--sunny-yellow))',
+				'sky-blue': 'hsl(var(--sky-blue))',
+				'mint-green': 'hsl(var(--mint-green))',
+				'soft-lavender': 'hsl(var(--soft-lavender))',
+				'navy-blue': 'hsl(var(--navy-blue))',
+				'cream-white': 'hsl(var(--cream-white))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'

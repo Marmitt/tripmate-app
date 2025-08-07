@@ -1,42 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* TripMate Design System - Vibrant Travel Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors */
+    --background: 210 100% 99%;
+    --foreground: 220 20% 15%;
 
+    /* TripMate Vibrant Colors */
+    --coral-pink: 8 89% 70%;
+    --sunny-yellow: 51 100% 65%;
+    --sky-blue: 200 100% 85%;
+    --mint-green: 160 70% 80%;
+    --soft-lavender: 275 50% 88%;
+    --navy-blue: 220 30% 25%;
+    --cream-white: 45 25% 96%;
+    
+    /* Component Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 8 89% 70%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 160 70% 80%;
+    --secondary-foreground: 220 20% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 220 15% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 51 100% 65%;
+    --accent-foreground: 220 20% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --hero-button: 51 100% 65%;
+    --hero-button-foreground: 220 20% 15%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --border: 220 20% 90%;
+    --input: 220 20% 95%;
+    --ring: 8 89% 70%;
+
+    --radius: 1rem;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(200 100% 85%), hsl(160 70% 80%), hsl(51 100% 90%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    --gradient-button: linear-gradient(135deg, hsl(51 100% 65%), hsl(51 90% 70%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(220 20% 15% / 0.1);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.3);
+    --shadow-float: 0 8px 40px -8px hsl(220 20% 15% / 0.15);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +124,72 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-fredoka;
   }
+}
+
+@layer components {
+  /* Hero Background Animation */
+  .hero-background {
+    background: var(--gradient-hero);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease-in-out infinite;
+  }
+  
+  /* Floating Icons */
+  .floating-icon {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-icon:nth-child(2) { animation-delay: -2s; }
+  .floating-icon:nth-child(3) { animation-delay: -4s; }
+  
+  /* Hero Card Styles */
+  .hero-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+  }
+  
+  .hero-card:hover {
+    box-shadow: var(--shadow-float);
+    transform: translateY(-2px);
+  }
+  
+  /* Button Variants */
+  .btn-hero {
+    background: var(--gradient-button);
+    color: hsl(var(--hero-button-foreground));
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-hero:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Input Styling */
+  .input-hero {
+    background: hsl(var(--input));
+    border: 2px solid hsl(var(--border));
+    transition: all 0.3s ease;
+  }
+  
+  .input-hero:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-10px) translateX(5px); }
+  50% { transform: translateY(-5px) translateX(10px); }
+  75% { transform: translateY(-15px) translateX(-5px); }
 }
