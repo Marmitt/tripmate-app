@@ -131,7 +131,7 @@
 @layer components {
   /* Hero Background */
   .hero-background {
-    background-image: url('/src/assets/travel-background-detailed.jpg');
+    background-image: url('/src/assets/travel-background-dense.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -148,13 +148,16 @@
   
   /* Hero Card Styles */
   .hero-card {
-    background: var(--gradient-card);
-    box-shadow: var(--shadow-soft);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
   
   .hero-card:hover {
-    box-shadow: var(--shadow-float);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
   
