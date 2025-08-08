@@ -129,11 +129,13 @@
 }
 
 @layer components {
-  /* Hero Background Animation */
+  /* Hero Background */
   .hero-background {
-    background: var(--gradient-hero);
-    background-size: 400% 400%;
-    animation: gradientShift 8s ease-in-out infinite;
+    background-image: url('/src/assets/travel-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   
   /* Floating Icons */
