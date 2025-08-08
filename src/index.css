@@ -131,7 +131,7 @@
 @layer components {
   /* Hero Background */
   .hero-background {
-    background-image: url('/src/assets/travel-background.jpg');
+    background-image: url('/src/assets/travel-background-detailed.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
