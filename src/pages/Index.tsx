@@ -9,6 +9,7 @@ type AppState = "landing" | "questionnaire" | "results";
 
 interface TripData {
   startCountry: string;
+  intermediateCountries: string[];
   endCountry: string;
   startDate: Date | null;
   endDate: Date | null;

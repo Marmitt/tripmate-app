@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Calendar, Sparkles } from "lucide-react";
+import { Calendar, Sparkles, Plus, X } from "lucide-react";
+import CountryAutocomplete from "./CountryAutocomplete";
 
 interface HeroSectionProps {
   onStartPlanning: (data: {
     startCountry: string;
+    intermediateCountries: string[];
     endCountry: string;
     startDate: Date | null;
     endDate: Date | null;
@@ -18,13 +19,28 @@ interface HeroSectionProps {
 const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
   const [startCountry, setStartCountry] = useState("");
   const [endCountry, setEndCountry] = useState("");
+  const [intermediateCountries, setIntermediateCountries] = useState<string[]>([]);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
   const handleSubmit = () => {
     if (startCountry && endCountry) {
-      onStartPlanning({ startCountry, endCountry, startDate, endDate });
+      onStartPlanning({ startCountry, intermediateCountries, endCountry, startDate, endDate });
     }
+  };
+
+  const addIntermediateCountry = () => {
+    setIntermediateCountries([...intermediateCountries, ""]);
+  };
+
+  const removeIntermediateCountry = (index: number) => {
+    setIntermediateCountries(intermediateCountries.filter((_, i) => i !== index));
+  };
+
+  const updateIntermediateCountry = (index: number, value: string) => {
+    const updated = [...intermediateCountries];
+    updated[index] = value;
+    setIntermediateCountries(updated);
   };
 
   return (
@@ -33,7 +49,7 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
         initial={{ opacity: 0, y: 50, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-lg w-full mx-4 border border-white/20 shadow-lg"
+        className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-lg w-full mx-4 border border-white/20 shadow-lg"
       >
         <div className="text-center mb-8">
           <motion.div
@@ -62,30 +78,75 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7, duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-4"
+            className="space-y-4"
           >
-            <div>
-              <label className="block text-sm font-medium mb-2 text-coral-pink">
-                Starting Country
-              </label>
-              <Input
-                placeholder="e.g., Australia"
-                value={startCountry}
-                onChange={(e) => setStartCountry(e.target.value)}
-                className="input-hero text-lg h-12 rounded-xl"
-              />
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-2 text-coral-pink">
+                  Starting Country
+                </label>
+                <CountryAutocomplete
+                  placeholder="e.g., Australia"
+                  value={startCountry}
+                  onChange={setStartCountry}
+                  className="input-hero text-lg h-12 rounded-xl"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2 text-coral-pink">
+                  Ending Country
+                </label>
+                <CountryAutocomplete
+                  placeholder="e.g., Japan"
+                  value={endCountry}
+                  onChange={setEndCountry}
+                  className="input-hero text-lg h-12 rounded-xl"
+                />
+              </div>
             </div>
-            <div>
-              <label className="block text-sm font-medium mb-2 text-coral-pink">
-                Ending Country
-              </label>
-              <Input
-                placeholder="e.g., Japan"
-                value={endCountry}
-                onChange={(e) => setEndCountry(e.target.value)}
-                className="input-hero text-lg h-12 rounded-xl"
-              />
-            </div>
+
+            {/* Intermediate Countries */}
+            {intermediateCountries.length > 0 && (
+              <div className="space-y-3">
+                <label className="block text-sm font-medium text-coral-pink">
+                  Countries to visit in between
+                </label>
+                {intermediateCountries.map((country, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex gap-2"
+                  >
+                    <CountryAutocomplete
+                      placeholder={`Country ${index + 1}`}
+                      value={country}
+                      onChange={(value) => updateIntermediateCountry(index, value)}
+                      className="input-hero text-lg h-12 rounded-xl flex-1"
+                    />
+                    <Button
+                      type="button"
+                      onClick={() => removeIntermediateCountry(index)}
+                      variant="outline"
+                      className="h-12 w-12 rounded-xl border-coral-pink/20 text-coral-pink hover:bg-coral-pink/10"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            <Button
+              type="button"
+              onClick={addIntermediateCountry}
+              variant="outline"
+              className="w-full h-12 rounded-xl border-coral-pink/30 text-coral-pink hover:bg-coral-pink/10 border-2 border-dashed"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Add country to visit
+            </Button>
           </motion.div>
 
           <motion.div
