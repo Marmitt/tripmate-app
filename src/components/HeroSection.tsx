@@ -33,7 +33,7 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
         initial={{ opacity: 0, y: 50, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="hero-card rounded-3xl p-8 md:p-12 max-w-2xl w-full mx-4 backdrop-blur-sm"
+        className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-lg w-full mx-4 border border-white/20 shadow-lg"
       >
         <div className="text-center mb-8">
           <motion.div
@@ -51,7 +51,7 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground font-dm-sans"
+            className="text-lg md:text-xl text-coral-pink/80 font-dm-sans"
           >
             Your AI-powered travel companion to plan the perfect itinerary
           </motion.p>
@@ -65,7 +65,7 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
             className="grid md:grid-cols-2 gap-4"
           >
             <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">
+              <label className="block text-sm font-medium mb-2 text-coral-pink">
                 Starting Country
               </label>
               <Input
@@ -76,7 +76,7 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">
+              <label className="block text-sm font-medium mb-2 text-coral-pink">
                 Ending Country
               </label>
               <Input
@@ -95,7 +95,7 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
             className="grid md:grid-cols-2 gap-4"
           >
             <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">
+              <label className="block text-sm font-medium mb-2 text-coral-pink">
                 Start Date
               </label>
               <div className="relative">
@@ -110,7 +110,7 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">
+              <label className="block text-sm font-medium mb-2 text-coral-pink">
                 End Date
               </label>
               <div className="relative">
