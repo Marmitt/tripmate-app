@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "@/components/ui/button";
 import { Calendar, Sparkles, Plus, X } from "lucide-react";
 import CountryAutocomplete from "./CountryAutocomplete";
+import { countries } from "@/data/countries";
 
 interface HeroSectionProps {
   onStartPlanning: (data: {
@@ -24,7 +25,17 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
   const [endDate, setEndDate] = useState<Date | null>(null);
 
   const handleSubmit = () => {
-    if (startCountry && endCountry) {
+    // Validate that all countries are in the countries list
+    const allCountries = [startCountry, ...intermediateCountries.filter(c => c), endCountry];
+    const invalidCountries = allCountries.filter(country => 
+      country && !countries.includes(country)
+    );
+    
+    if (invalidCountries.length > 0) {
+      return; // Don't proceed if invalid countries
+    }
+    
+    if (startCountry && endCountry && countries.includes(startCountry) && countries.includes(endCountry)) {
       onStartPlanning({ startCountry, intermediateCountries, endCountry, startDate, endDate });
     }
   };
@@ -58,7 +69,6 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="flex items-center justify-center gap-3 mb-4"
           >
-            <span className="text-5xl md:text-6xl">🌎</span>
             <h1 className="text-4xl md:text-5xl font-bold text-coral-pink font-fredoka">
               TripMate
             </h1>
@@ -196,18 +206,10 @@ const HeroSection = ({ onStartPlanning }: HeroSectionProps) => {
           >
             <Button
               onClick={handleSubmit}
-              disabled={!startCountry || !endCountry}
+              disabled={!startCountry || !endCountry || !countries.includes(startCountry) || !countries.includes(endCountry) || intermediateCountries.some(c => c && !countries.includes(c))}
               className="btn-hero w-full h-14 text-lg font-semibold rounded-xl font-fredoka group"
             >
-              <span className="flex items-center gap-2">
-                Start Planning
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Sparkles className="h-5 w-5" />
-                </motion.div>
-              </span>
+              Start Planning
             </Button>
           </motion.div>
         </div>

@@ -91,24 +91,24 @@ const QuestionnaireSection = ({ onComplete, onBack }: QuestionnaireSectionProps)
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -100 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="min-h-screen py-8 px-4"
-    >
-      <div className="max-w-4xl mx-auto">
+    <div className="flex items-center justify-center min-h-screen relative">
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-4xl w-full mx-4 border border-white/20 shadow-lg"
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-coral-pink font-fredoka mb-4">
-            Let's Build Your Dream Trip! ✨
+          <h1 className="text-3xl md:text-4xl font-bold text-navy-blue font-fredoka mb-4">
+            Let's Build Your Dream Trip
           </h1>
-          <p className="text-lg text-muted-foreground font-dm-sans">
+          <p className="text-lg text-navy-blue/70 font-dm-sans">
             Tell us about your travel style and preferences
           </p>
         </motion.div>
@@ -350,19 +350,12 @@ const QuestionnaireSection = ({ onComplete, onBack }: QuestionnaireSectionProps)
             >
               <span className="flex items-center gap-2">
                 Create My Itinerary!
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Sparkles className="h-5 w-5" />
-                </motion.div>
-                🎉
               </span>
             </Button>
           </motion.div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
