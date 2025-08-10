@@ -91,14 +91,14 @@ const QuestionnaireSection = ({ onComplete, onBack }: QuestionnaireSectionProps)
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen relative">
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -100 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-4xl w-full mx-4 border border-white/20 shadow-lg"
-      >
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="min-h-screen py-8 px-4"
+    >
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -354,8 +354,8 @@ const QuestionnaireSection = ({ onComplete, onBack }: QuestionnaireSectionProps)
             </Button>
           </motion.div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
