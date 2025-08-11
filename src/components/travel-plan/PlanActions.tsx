@@ -49,16 +49,14 @@ const PlanActions = ({ travelPlan, tripData }: PlanActionsProps) => {
     <div className="flex gap-4 mb-8">
       <Button 
         onClick={downloadPlan} 
-        variant="outline" 
-        className="bg-white/90 backdrop-blur-sm border-white/30 hover:bg-white text-navy-blue hover:text-navy-blue shadow-md"
+        variant="outline"
       >
         <Download className="w-4 h-4 mr-2" />
         Download Plan
       </Button>
       <Button 
         onClick={sharePlan} 
-        variant="outline" 
-        className="bg-white/90 backdrop-blur-sm border-white/30 hover:bg-white text-navy-blue hover:text-navy-blue shadow-md"
+        variant="outline"
       >
         <Share2 className="w-4 h-4 mr-2" />
         Share Plan

@@ -51,7 +51,7 @@ const TripSummaryCard = ({ tripData, preferences }: TripSummaryCardProps) => {
   ];
 
   return (
-    <Card className="bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-sm border-white/30 shadow-xl mb-8">
+    <Card className="hero-card mb-8">
       <CardContent className="p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {summaryItems.map((item, index) => (
