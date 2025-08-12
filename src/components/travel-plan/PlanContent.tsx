@@ -56,7 +56,7 @@ const PlanContent = ({ travelPlan }: PlanContentProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.6 }}
     >
-      <Card className="hero-card">
+      <Card className="results-card">
         <CardContent className="p-10">
           <div className="prose prose-lg max-w-none">
             {formatTravelPlan(travelPlan)}

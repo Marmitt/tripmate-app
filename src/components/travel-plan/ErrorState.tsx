@@ -10,7 +10,7 @@ interface ErrorStateProps {
 
 const ErrorState = ({ error, onRetry }: ErrorStateProps) => {
   return (
-    <Card className="hero-card">
+    <Card className="results-card">
       <CardContent className="text-center py-20">
         <div className="mb-6">
           <AlertTriangle className="w-16 h-16 text-coral-pink mx-auto mb-4" />
