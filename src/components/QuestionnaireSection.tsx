@@ -75,7 +75,15 @@ const QuestionnaireSection = ({ onComplete, onBack }: QuestionnaireSectionProps)
     );
   };
 
+  const isFormValid = () => {
+    return budget && pace && vibes.length > 0 && accommodation && interests.length > 0;
+  };
+
   const handleComplete = () => {
+    if (!isFormValid()) {
+      return;
+    }
+    
     const preferences = {
       travelers,
       budget,
@@ -346,12 +354,18 @@ const QuestionnaireSection = ({ onComplete, onBack }: QuestionnaireSectionProps)
             </Button>
             <Button
               onClick={handleComplete}
-              className="btn-hero px-8 py-3 rounded-xl font-fredoka text-lg group"
+              disabled={!isFormValid()}
+              className="btn-hero px-8 py-3 rounded-xl font-fredoka text-lg group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="flex items-center gap-2">
                 Create My Itinerary!
               </span>
             </Button>
+            {!isFormValid() && (
+              <p className="text-sm text-coral-pink mt-2 text-center">
+                Please fill out all required fields: budget, pace, at least one vibe, accommodation, and at least one interest.
+              </p>
+            )}
           </motion.div>
         </div>
       </div>
