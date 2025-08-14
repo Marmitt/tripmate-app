@@ -13,7 +13,7 @@ const TravelPlanHeader = ({ onBack }: TravelPlanHeaderProps) => {
       <Button 
         onClick={onBack}
         variant="outline"
-        className="mb-6 hero-card hover:hero-card text-navy-blue border-white/30 hover:bg-white/10"
+        className="mb-6 results-card hover:results-card text-navy-blue"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to Planning
