@@ -176,6 +176,14 @@
     transform: translateY(-2px);
   }
   
+  /* Static Hero Card - Same as hero-card but without hover effects */
+  .hero-card-static {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
   /* Button Variants */
   .btn-hero {
     background: var(--gradient-button);

@@ -13,13 +13,13 @@ const TravelPlanHeader = ({ onBack }: TravelPlanHeaderProps) => {
       <Button 
         onClick={onBack}
         variant="outline"
-        className="mb-6 hero-card hover:hero-card text-navy-blue"
+        className="mb-6 hero-card-static text-navy-blue"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to Planning
       </Button>
 
-      <Card className="hero-card">
+      <Card className="hero-card-static">
         <CardHeader className="pb-4">
           <CardTitle className="text-3xl font-bold text-navy-blue flex items-center gap-3">
             <div className="p-2 bg-coral-pink/20 rounded-full">
