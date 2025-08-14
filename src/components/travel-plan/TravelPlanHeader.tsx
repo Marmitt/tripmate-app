@@ -19,7 +19,7 @@ const TravelPlanHeader = ({ onBack }: TravelPlanHeaderProps) => {
         Back to Planning
       </Button>
 
-      <Card className="results-card">
+      <Card className="hero-card">
         <CardHeader className="pb-4">
           <CardTitle className="text-3xl font-bold text-navy-blue flex items-center gap-3">
             <div className="p-2 bg-coral-pink/20 rounded-full">

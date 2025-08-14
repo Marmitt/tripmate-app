@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const LoadingState = () => {
   return (
-    <Card className="results-card">
+    <Card className="hero-card">
       <CardContent className="flex flex-col items-center justify-center py-20">
         <div className="relative mb-8">
           <motion.div
